@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         id="WebApp_ID" version="3.1">
+
+  <filter>
+    <filter-name>authentication</filter-name>
+    <filter-class>com.hoangvu.filter.AuthenticationFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>authentication</filter-name>
+    <url-pattern>/assessment</url-pattern>
+    <url-pattern>/send-feedback</url-pattern>
+  </filter-mapping>
+
+  <filter>
+    <filter-name>role</filter-name>
+    <filter-class>com.hoangvu.filter.RoleFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>role</filter-name>
+    <url-pattern>/admin/*</url-pattern>
+  </filter-mapping>
+
+  <filter>
+    <filter-name>charset</filter-name>
+    <filter-class>com.hoangvu.filter.CharsetEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>charset</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+
+</web-app>
